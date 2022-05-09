@@ -1,5 +1,3 @@
-import random
-
 #normaliza base países
 def normaliza(dicionario):
     d={}
@@ -10,9 +8,11 @@ def normaliza(dicionario):
     return d
 
 #sorteia Paises
+import random
 def sorteia_pais(dicio):
     randomkeys=random.choice(list(dicio.keys()))
     return randomkeys
+
 
 #distancia de haverstine
 import math
