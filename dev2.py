@@ -1,5 +1,5 @@
 print('João')
 print('Cadu')
 
-def paises():
-    
+def paises(j):
+    return j
