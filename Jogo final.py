@@ -5,6 +5,7 @@ dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
  
 #criando variaveis para rodar no while
+distancias= ''
 dicas = ''
 Tentativa=''
 chances = 20
@@ -59,7 +60,7 @@ while Tentativa != sorteado and chances>0:
     # se estiver nao acontece nada só volta para o inicio do while
     elif Tentativa in lista_tentativas_paises:
         chances-=1
-        print('Distâncias: ')
+        print('Distâncias: {0}'.format(distancias))
         print('Dicas: {0}'.format(dicas))
         print("Você tem {0} tentativa(s)".format(chances) )
         Tentativa=input('digite seu comando ou sua tentativa: ')
@@ -70,12 +71,14 @@ while Tentativa != sorteado and chances>0:
         print("*** Parabéns! Você acertou depois de {0} tentativas".format(chances))
         break
 
-    # depois do else ver se o pais tentado existe,
-    # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
-    # e colocar diferentes cores para as diferentes distancias  
+    #se for diferente de país
     else:
         print('pais desconhecido')
         Tentativa=input('digite seu comando ou sua tentativa: ')
+    
+    # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
+    # e colocar diferentes cores para as diferentes distancias  
+    
 
 
 
