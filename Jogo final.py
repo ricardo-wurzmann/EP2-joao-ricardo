@@ -78,6 +78,7 @@ while Tentativa != sorteado and chances>0:
     
         # se estiver nao acontece nada só volta para o inicio do while
     elif Tentativa in lista_tentativas_paises:
+        print('Você já tentou esse País')
         print('Distâncias: ')
         print('Dicas: {0}'.format(dicas))
         print("Você tem {0} tentativa(s)".format(chances) )
@@ -92,7 +93,12 @@ while Tentativa != sorteado and chances>0:
         # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
         # e colocar diferentes cores para as diferentes distancias  
     else:
-        print('pais desconhecido')
+        if Tentativa in dados:
+            chances-=1
+            print('esse não é o país')
+            lista_tentativas_paises.append(Tentativa)
+        else:
+            print('esse não é um país válido')
 
 
 
