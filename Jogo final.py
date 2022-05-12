@@ -4,8 +4,9 @@ import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
  
- #criando variaveis para rodar no while
-Tentativa='o'
+#criando variaveis para rodar no while
+dicas = ''
+Tentativa=''
 chances = 20
 lista_tentativas_paises=[]
 
@@ -30,31 +31,51 @@ while Tentativa != sorteado and chances>0:
     Tentativa=input('digite seu comando ou sua tentativa: ')
     #ainda precisa fazer códico dando dica para o mano
     if Tentativa=='dica':
+        print('    Mercado de Dicas')
+        print('----------------------------------------')
+        print('1. Cor da bandeira  - custa 4 tentativas')
+        print('2. Letra da capital - custa 3 tentativas')
+        print('3. Área             - custa 6 tentativas')
+        print('4. População        - custa 5 tentativas')
+        print('5. Continente       - custa 7 tentativas')
+        print('0. Sem dica')
+        print('----------------------------------------')
+        escolha_dica = input('Escolha sua opção [0|1|2|3|4|5]: ')
+        if escolha_dica == 0:
+            #preciso ver isso de dicionario
+
         chances-=1
     
     #mo burrão se desistir claramente não faz insper
     elif Tentativa=='desisto':
-        chances-=1
-        break
+        desistencia=input('Você quer mesmo desistir? [s/n]')
+        if desistencia == 's':
+            break
+        if desistencia == 'n':
+            #voltar pro while
+            Tentativa=input('digite seu comando ou sua tentativa: ')
 
-    #não sei o que faz no inventário (coloquei aqui pq vc meteu nas instruções)
-    elif Tentativa=='inventario':
-        Tentativa=0
     
     # se estiver nao acontece nada só volta para o inicio do while
     elif Tentativa in lista_tentativas_paises:
-        Tentativa=0
+        chances-=1
+        print('Distâncias: ')
+        print('Dicas: {0}'.format(dicas))
+        print("Você tem {0} tentativa(s)".format(chances) )
+        Tentativa=input('digite seu comando ou sua tentativa: ')
+        
 
     #caso acertar sair do while
     elif Tentativa==sorteado:
-        chances-=1
+        print("*** Parabéns! Você acertou depois de {0} tentativas".format(chances))
         break
 
     # depois do else ver se o pais tentado existe,
     # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
     # e colocar diferentes cores para as diferentes distancias  
     else:
-        print('bananão')
+        print('pais desconhecido')
+        Tentativa=input('digite seu comando ou sua tentativa: ')
 
 
 
