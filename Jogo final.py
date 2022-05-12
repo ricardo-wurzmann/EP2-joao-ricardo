@@ -23,7 +23,7 @@ print("Um país foi escolhido, tente adivinhar!")
 print("Você tem {0} tentativa(s)".format(chances) )
 print("Qual seu palpite?")
 
-sorteado = Funcoes.sorteia_pais(Base_países.DADOS)
+sorteado = Funcoes.sorteia_pais(dados)
 print(sorteado)
 
 
@@ -69,31 +69,28 @@ while Tentativa != sorteado and chances>0:
          
 
     
-    #mo burrão se desistir claramente não faz insper
+        #mo burrão se desistir claramente não faz insper
     elif Tentativa=='desisto':
         desistencia=input('Você quer mesmo desistir? [s/n]')
         if desistencia == 's':
             break
-        if desistencia == 'n':
-            #voltar pro while
-            Tentativa=input('digite seu comando ou sua tentativa: ')
 
     
-    # se estiver nao acontece nada só volta para o inicio do while
+        # se estiver nao acontece nada só volta para o inicio do while
     elif Tentativa in lista_tentativas_paises:
         print('Distâncias: ')
         print('Dicas: {0}'.format(dicas))
         print("Você tem {0} tentativa(s)".format(chances) )
         
 
-    #caso acertar sair do while
+        #caso acertar sair do while
     elif Tentativa==sorteado:
-        print("*** Parabéns! Você acertou depois de {0} tentativas".format(chances))
+        print("*** Parabéns! Você acertou depois de {0} tentativas".format((20-chances)))
         break
 
-    # depois do else ver se o pais tentado existe,
-    # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
-    # e colocar diferentes cores para as diferentes distancias  
+        # depois do else ver se o pais tentado existe,
+        # se ele existir contabilizar ele na quantidade de tentativas, calcular a distancia de haverstine 
+        # e colocar diferentes cores para as diferentes distancias  
     else:
         print('pais desconhecido')
 
