@@ -3,8 +3,12 @@ import Funcoes
 import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
+ 
+ #criando variaveis para rodar no while
+Tentativa='o'
+chances = 20
+lista_tentativas_paises=[]
 
-chances = 20 
 print(" ============================")
 print("|                            |")
 print("| Bem-vindo ao Insper Países |")
@@ -20,21 +24,17 @@ print("Qual seu palpite?")
 
 sorteado = Funcoes.sorteia_pais(Base_países.DADOS)
 
-#criando variaveis para rodar no while
-Tentativa='o'
-quantidade_tentativa=0
-lista_tentativas_paises=[]
 
-while Tentativa != sorteado or quantidade_tentativa<20:
-    print('Você já fez {} tentativas'.format(quantidade_tentativa))
+while Tentativa != sorteado or chances>0:
+    print('Você ainda tem {} tentativas'.format(chances))
     Tentativa=input('digite seu comando ou sua tentativa: ')
     #ainda precisa fazer códico dando dica para o mano
     if Tentativa=='dica':
-        quantidade_tentativa+=1
+        chances-=1
     
     #mo burrão se desistir claramente não faz insper
     elif Tentativa=='desisto':
-        quantidade_tentativa+=1
+        chances-=1
         break
 
     #não sei o que faz no inventário (coloquei aqui pq vc meteu nas instruções)
@@ -47,7 +47,7 @@ while Tentativa != sorteado or quantidade_tentativa<20:
 
     #caso acertar sair do while
     elif Tentativa==sorteado:
-        quantidade_tentativa+=1
+        chances-=1
         break
 
     # depois do else ver se o pais tentado existe,
