@@ -25,7 +25,7 @@ print("Qual seu palpite?")
 sorteado = Funcoes.sorteia_pais(Base_países.DADOS)
 
 
-while Tentativa != sorteado or chances>0:
+while Tentativa != sorteado and chances>0:
     print('Você ainda tem {} tentativas'.format(chances))
     Tentativa=input('digite seu comando ou sua tentativa: ')
     #ainda precisa fazer códico dando dica para o mano
