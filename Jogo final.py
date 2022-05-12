@@ -1,4 +1,5 @@
 #normalizando base países
+import random
 import Funcoes
 import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
@@ -53,7 +54,7 @@ while Tentativa != sorteado and chances>0:
                 chances-=4
             elif escolha_dica == 2:
                 #falta dar um random para só dar uma letra da capital
-                print('A capital é: {}'.format(dados[sorteado]['capital']))
+                print('A capital é: {}'.format(random(dados[sorteado]['capital'])))
                 chances-=3
             elif escolha_dica == 3:
                 print('A Área é: {}'.format(dados[sorteado]['area']))
