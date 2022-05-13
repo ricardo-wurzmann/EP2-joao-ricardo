@@ -2,7 +2,7 @@
 from operator import itemgetter
 from random import random
 import Funcoes
-import Base_países
+import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
 jogar='s'
@@ -100,10 +100,7 @@ while jogar=='s':
                 chances-=1
                 lista_tentativas_paises.append(Tentativa)
                 #so fiz para testar outra funcionalidade(tirar esse if e else)
-                if Tentativa=='brasil':
-                    distancia_pais=1
-                else:
-                    distancia_pais=0
+                distancia_pais = Funcoes.haversine(dados[Tentativa]['geo']['latitude'],dados[Tentativa]['geo']['longitude'], dados[sorteado]['geo']['latitude'], dados[sorteado]['geo']['longitude'])
                 distancias.append([Tentativa,distancia_pais])
                 distancias = Funcoes.adiciona_em_ordem(distancias)
 

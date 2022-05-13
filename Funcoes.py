@@ -16,7 +16,7 @@ def sorteia_pais(dicio):
 
 #distancia de haverstine
 import math
-def haversine (r, p1, l1, p2, l2):
+def haversine (p1, l1, p2, l2):
     r = 6371
     p1_rad = math.radians(p1)
     l1_rad = math.radians(l1)
