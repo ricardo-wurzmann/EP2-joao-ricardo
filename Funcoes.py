@@ -39,3 +39,19 @@ def esta_na_lista(pais,lista):
         if pais in i:
             return True
     return False
+
+#sorteia lista com restrições
+import random
+def sorteia_letra(palavra,lista):
+    pal = palavra.lower()
+    p = list(pal)
+    restri = ['.', ',', '-', ';', ' ']
+    n_l = []
+    for i in p:
+        if i not in lista and i not in restri:
+            n_l.append(i)
+    print (n_l)
+    if n_l == []:
+        return ''
+    final = random.choice(n_l)
+    return final
