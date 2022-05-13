@@ -109,7 +109,7 @@ while jogar=='s':
         #parte de dar print em distancias
         print('\nDistancias:\n')
         for i in range(len(distancias)):
-            print('   {}km--->{}'.format(distancias[i][1],distancias[i][0]))
+            print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
         
         #parte de dar print em dicas
         print('\n Dicas:\n')
