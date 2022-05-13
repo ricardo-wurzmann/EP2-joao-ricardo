@@ -1,13 +1,13 @@
 #normalizando base países
-import random
+from operator import itemgetter
 import Funcoes
-import Base_países
+import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
  
 #criando variaveis para rodar no while
-distancias= ''
-dicas = ''
+distancias= []
+dicas = []
 Tentativa=''
 chances = 20
 lista_tentativas_paises=[]
@@ -101,6 +101,10 @@ while Tentativa != sorteado and chances>0:
             chances-=1
             print('esse não é o país')
             lista_tentativas_paises.append(Tentativa)
+            distancia_pais = Funcoes.haversine(sorteado - Tentativa)
+            distancias.append(distancia_pais)
+            distancias = adiciona_em_ordem(distancias):
+
         else:
             print('esse não é um país válido')
 
