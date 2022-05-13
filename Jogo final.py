@@ -9,7 +9,7 @@ jogar='s'
 while jogar=='s': 
     #criando variaveis para rodar no while
     distancias= []
-    dicas = []
+    dicas_compradas=[]
     Tentativa=''
     chances = 20
     lista_tentativas_paises=[]
@@ -52,20 +52,21 @@ while jogar=='s':
                 if escolha_dica == 0:
                     print('Não tem dica')
                 elif escolha_dica == 1:
-                    print('as cores da bandeira são:{}'.format(dados[sorteado]['bandeira']))
+                    #precisa só aparecer uma cor de bandeira
+                    dicas_compradas.append([dados[sorteado]['bandeira'],1,'cor da bandeira',''])
                     chances-=4
                 elif escolha_dica == 2:
+                    dicas_compradas.append([dados[sorteado]['capital'],2,'Letra da capital',''])
                     #falta dar um random para só dar uma letra da capital
-                    print('A capital é: {}'.format(dados[sorteado]['capital']))
                     chances-=3
                 elif escolha_dica == 3:
-                    print('A Área é: {}'.format(dados[sorteado]['area']))
+                    dicas_compradas.append([dados[sorteado]['area'],3,'Área',' km2'])
                     chances-=6
                 elif escolha_dica == 4:
-                    print('A População é: {}'.format(dados[sorteado]['populacao']))
+                    dicas_compradas.append([dados[sorteado]['populacao'],4,'Populacao',' habitantes'])
                     chances-=5  
                 elif escolha_dica == 5:
-                    print('O continente é: {}'.format(dados[sorteado]['continente']))
+                    dicas_compradas.append([dados[sorteado]['continente'],5,'Continente',''])
                     chances-=7
                 else:
                     print('você escolheu um número inválido.')
@@ -80,12 +81,9 @@ while jogar=='s':
                 break
 
     
-            # aqui precisa colocar a distancia do pais que foi tentado, colocar as dicas que já foram
+        # caso ele tente um pais que já foi tentado    
         elif Tentativa in lista_tentativas_paises:
             print('Você já tentou esse País')
-            print('Distâncias: ')
-            print('Dicas: {0}'.format(dicas))
-            print("Você tem {0} tentativa(s)".format(chances) )
         
 
             #caso acertar sair do while
@@ -111,8 +109,17 @@ while jogar=='s':
 
             else:
                 print('esse não é um país válido')
+        #parte de dar print em distancias
         print('\nDistancias:\n')
         for i in range(len(distancias)):
-            print('{}km--->{}'.format(distancias[i][1],distancias[i][0]))
+            print('   {}km--->{}'.format(distancias[i][1],distancias[i][0]))
+        
+        #parte de dar print em dicas
+        print('\n Dicas:\n')
+        dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
+        for i in range(len(dicas_compradas)):
+            print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
+            
+    #parte para jogar denovo
     jogar=input('você quer jogar donvo(s/n)')
     
