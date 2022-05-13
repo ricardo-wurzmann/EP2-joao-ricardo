@@ -117,6 +117,9 @@ while jogar=='s':
         for i in range(len(dicas_compradas)):
             print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
             
+    if chances = 0 and sorteado != Tentativa:
+        print ('Você perdeu, tente melhorar, o país era{}'.format(sorteado))
+
     #parte para jogar denovo
     jogar=input('você quer jogar donvo(s/n)')
     
