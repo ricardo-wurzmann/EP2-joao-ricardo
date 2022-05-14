@@ -9,6 +9,7 @@ jogar='s'
 while jogar=='s': 
     #criando variaveis para rodar no while
     distancias= []
+    letras_sorteadas = []
     dicas_compradas=[]
     Tentativa=''
     chances = 20
@@ -56,8 +57,9 @@ while jogar=='s':
                     dicas_compradas.append([dados[sorteado]['bandeira'],1,'cor da bandeira',''])
                     chances-=4
                 elif escolha_dica == 2:
-                    dicas_compradas.append([dados[sorteado]['capital'],2,'Letra da capital',''])
-                    #falta dar um random para só dar uma letra da capital
+                    letras_sorteadas = Funcoes.sorteia_letra(dados[Tentativa],2,['capital'],letras_sorteadas)
+                    dicas_compradas.append(letras_sorteadas)
+                    #falta dar um random para só dar uma letra da capital, acho que fiz
                     chances-=3
                 elif escolha_dica == 3:
                     dicas_compradas.append([dados[sorteado]['area'],3,'Área',' km2'])
