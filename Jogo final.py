@@ -82,6 +82,11 @@ while jogar=='s':
             if desistencia == 's':
                 break
 
+        #inventário
+        elif Tentativa == 'inventario':
+            print(distancias, dicas_compradas)
+
+
     
         # caso ele tente um pais que já foi tentado    
         elif Tentativa in lista_tentativas_paises:
@@ -92,10 +97,6 @@ while jogar=='s':
         elif Tentativa==sorteado:
             print("*** Parabéns! Você acertou depois de {0} tentativas".format((20-chances)))
             break
-
-
-            #falta colocar a distancia de havertine
-            #colocar cores diferentes para cada distancia
 
         else:
             if Tentativa in dados:
