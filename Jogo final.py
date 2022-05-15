@@ -34,6 +34,7 @@ while jogar=='s':
     while Tentativa != sorteado and chances>0:
         print('\n Você ainda tem {} tentativas'.format(chances))
         Tentativa=input('\n digite seu comando ou sua tentativa: ')
+        esta_na_lista=Funcoes.esta_na_lista(Tentativa,lista_tentativas_paises)
         #esse if é o da dica
         #precisa ajustar dica da bandeira e a da capital
         if Tentativa=='dica':
@@ -72,7 +73,16 @@ while jogar=='s':
                     chances-=7
                 else:
                     print('você escolheu um número inválido.')
+            #parte de dar print em distancias
+            print('\nDistancias:\n')
+            for i in range(len(distancias)):
+                print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
         
+            #parte de dar print em dicas
+            print('\n Dicas:\n')
+            dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
+            for i in range(len(dicas_compradas)):
+                print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
          
 
     
@@ -84,12 +94,22 @@ while jogar=='s':
 
         #inventário
         elif Tentativa == 'inventario':
-            print(distancias, dicas_compradas)
+           #parte de dar print em distancias
+            print('\nDistancias:\n')
+            for i in range(len(distancias)):
+                print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
+        
+            #parte de dar print em dicas
+            print('\n Dicas:\n')
+            dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
+            for i in range(len(dicas_compradas)):
+                print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
 
 
     
         # caso ele tente um pais que já foi tentado    
-        elif Tentativa in lista_tentativas_paises:
+        
+        elif esta_na_lista==True:
             print('Você já tentou esse País')
         
 
@@ -102,23 +122,24 @@ while jogar=='s':
             if Tentativa in dados:
                 chances-=1
                 lista_tentativas_paises.append(Tentativa)
-                #so fiz para testar outra funcionalidade(tirar esse if e else)
                 distancia_pais = Funcoes.haversine(dados[Tentativa]['geo']['latitude'],dados[Tentativa]['geo']['longitude'], dados[sorteado]['geo']['latitude'], dados[sorteado]['geo']['longitude'])
                 distancias.append([Tentativa,distancia_pais])
                 distancias = Funcoes.adiciona_em_ordem(distancias)
 
+                #parte de dar print em distancias
+                print('\nDistancias:\n')
+                for i in range(len(distancias)):
+                    print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
+        
+                #parte de dar print em dicas
+                print('\n Dicas:\n')
+                dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
+                for i in range(len(dicas_compradas)):
+                    print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
+
             else:
                 print('esse não é um país válido')
-        #parte de dar print em distancias
-        print('\nDistancias:\n')
-        for i in range(len(distancias)):
-            print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
         
-        #parte de dar print em dicas
-        print('\n Dicas:\n')
-        dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
-        for i in range(len(dicas_compradas)):
-            print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
             
     if chances == 0 and sorteado != Tentativa:
         print ('\n Você perdeu, tente melhorar, o país era {}'.format(sorteado))
