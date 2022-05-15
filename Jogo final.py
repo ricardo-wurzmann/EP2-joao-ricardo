@@ -30,9 +30,10 @@ while jogar=='s':
     print(sorteado)
 
 
-    while Tentativa.lower() != sorteado and chances>0:
+    while Tentativa != sorteado and chances>0:
         print('Você tem \033[35m{}\033[m tentativas'.format(chances))
         Tentativa=input('\ndigite seu comando ou sua tentativa: ')
+        Tentativa = Tentativa.lower()
         esta_na_lista=Funcoes.esta_na_lista(Tentativa,lista_tentativas_paises)
         #esse if é o da dica
         #precisa ajustar dica da bandeira e a da capital
