@@ -59,7 +59,10 @@ while jogar=='s':
                         if i.value != 0:
                             lista_cores.append(i)
                     cor = random(lista_cores)
-                    dicas_compradas.append(cor,1,'cor da bandeira','' )
+                    if cor not in dicas_compradas:
+                        dicas_compradas.append(cor,1,'cor da bandeira','' )
+                    else:
+                        cor = random(lista_cores)
                     #precisa só aparecer uma cor de bandeira
                     chances-=4
                 elif escolha_dica == 2:
