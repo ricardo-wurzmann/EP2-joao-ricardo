@@ -54,8 +54,13 @@ while jogar=='s':
                 if escolha_dica == 0:
                     print('Não tem dica')
                 elif escolha_dica == 1:
+                    for i in dados[sorteado]['bandeira']:
+                        lista_cores = []
+                        if i.value != 0:
+                            lista_cores.append(i)
+                    cor = random(lista_cores)
+                    dicas_compradas.append(cor,1,'cor da bandeira','' )
                     #precisa só aparecer uma cor de bandeira
-                    dicas_compradas.append([dados[sorteado]['bandeira'],1,'cor da bandeira',''])
                     chances-=4
                 elif escolha_dica == 2:
                     strcap=dados[sorteado]['capital']
