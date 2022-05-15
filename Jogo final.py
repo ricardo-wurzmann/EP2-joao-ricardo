@@ -58,7 +58,7 @@ while jogar=='s':
                     dicas_compradas.append([dados[sorteado]['bandeira'],1,'cor da bandeira',''])
                     chances-=4
                 elif escolha_dica == 2:
-                    letras_sorteadas = Funcoes.sorteia_letra(dados[Tentativa],2,['capital'],letras_sorteadas)
+                    letras_sorteadas = Funcoes.sorteia_letra(dados[sorteado],2,['capital'],letras_sorteadas)
                     dicas_compradas.append(letras_sorteadas)
                     #falta dar um random para só dar uma letra da capital, acho que fiz
                     chances-=3
