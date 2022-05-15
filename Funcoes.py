@@ -50,7 +50,6 @@ def sorteia_letra(palavra,lista):
     for i in p:
         if i not in lista and i not in restri:
             n_l.append(i)
-    print (n_l)
     if n_l == []:
         return ''
     final = random.choice(n_l)
