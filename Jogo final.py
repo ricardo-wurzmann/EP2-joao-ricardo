@@ -20,20 +20,19 @@ while jogar=='s':
     print("      | Bem-vindo ao Insper Países |")
     print("      |                            |")
     print("       ==== Design de Software ==== ")
-    print("\n Comandos:")
+    print("\nComandos:")
     print("    dica       - entra no mercado de dicas")
     print("    desisto    - desiste da rodada")
     print("    inventario - exibe sua posição")
-    print("\n Um país foi escolhido, tente adivinhar!")
-    print("\n Você tem {0} tentativa(s)".format(chances) )
+    print("\nUm país foi escolhido, tente adivinhar!")
 
     sorteado = Funcoes.sorteia_pais(dados)
     print(sorteado)
 
 
     while Tentativa != sorteado and chances>0:
-        print('\n Você ainda tem {} tentativas'.format(chances))
-        Tentativa=input('\n digite seu comando ou sua tentativa: ')
+        print('Você tem \033[35m{}\033[m tentativas'.format(chances))
+        Tentativa=input('\ndigite seu comando ou sua tentativa: ')
         esta_na_lista=Funcoes.esta_na_lista(Tentativa,lista_tentativas_paises)
         #esse if é o da dica
         #precisa ajustar dica da bandeira e a da capital
@@ -72,14 +71,21 @@ while jogar=='s':
                     dicas_compradas.append([dados[sorteado]['continente'],5,'Continente',''])
                     chances-=7
                 else:
-                    print('você escolheu um número inválido.')
+                    print('\033[31mvocê escolheu um número inválido.\033[m')
             #parte de dar print em distancias
-            print('\nDistancias:\n')
+            print('\n\033[35mDistancias:\033[m\n')
             for i in range(len(distancias)):
-                print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
+                if distancias[i][1]<1000:
+                    print('   \033[32m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                elif distancias[i][1]<2000:
+                    print('   \033[33m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                elif distancias[i][1]<5000:
+                    print('   \033[34m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                else:
+                    print('   \033[36m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
         
             #parte de dar print em dicas
-            print('\n Dicas:\n')
+            print('\n\033[35mDicas:\033[m\n')
             dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
             for i in range(len(dicas_compradas)):
                 print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
@@ -95,27 +101,35 @@ while jogar=='s':
         #inventário
         elif Tentativa == 'inventario':
            #parte de dar print em distancias
-            print('\nDistancias:\n')
+            print('\n\033[35mDistancias:\033[m\n')
             for i in range(len(distancias)):
-                print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
+                if distancias[i][1]<1000:
+                    print('   \033[32m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                elif distancias[i][1]<2000:
+                    print('   \033[33m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                elif distancias[i][1]<5000:
+                    print('   \033[34m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                else:
+                    print('   \033[36m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
         
             #parte de dar print em dicas
-            print('\n Dicas:\n')
+            print('\n\033[35mDicas:\033[m\n')
             dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
             for i in range(len(dicas_compradas)):
                 print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
+         
 
 
     
         # caso ele tente um pais que já foi tentado    
         
         elif esta_na_lista==True:
-            print('Você já tentou esse País')
+            print('\033[31mVocê já tentou esse País\033[m')
         
 
             #caso acertar sair do while
         elif Tentativa==sorteado:
-            print("*** Parabéns! Você acertou depois de {0} tentativas".format((20-chances)))
+            print("*** Parabéns! Você acertou depois de \033[35m{0}\033[m tentativas".format((20-chances)))
             break
 
         else:
@@ -127,24 +141,31 @@ while jogar=='s':
                 distancias = Funcoes.adiciona_em_ordem(distancias)
 
                 #parte de dar print em distancias
-                print('\nDistancias:\n')
+                print('\n\033[35mDistancias:\033[m\n')
                 for i in range(len(distancias)):
-                    print('   {:.0f}km--->{}'.format(distancias[i][1],distancias[i][0]))
-        
+                    if distancias[i][1]<1000:
+                        print('   \033[32m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                    elif distancias[i][1]<2000:
+                        print('   \033[33m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                    elif distancias[i][1]<5000:
+                        print('   \033[34m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
+                    else:
+                        print('   \033[36m{:.0f}km--->{}\033[m'.format(distancias[i][1],distancias[i][0]))
                 #parte de dar print em dicas
-                print('\n Dicas:\n')
+                print('\n \033[35mDicas:\033[m\n')
                 dicas_compradas=Funcoes.adiciona_em_ordem(dicas_compradas)
                 for i in range(len(dicas_compradas)):
                     print('-{}:  {}{}'.format(dicas_compradas[i][2],dicas_compradas[i][0],dicas_compradas[i][3]))
+         
 
             else:
-                print('esse não é um país válido')
+                print('\033[31messe não é um país válido\033[m')
         
             
     if chances == 0 and sorteado != Tentativa:
-        print ('\n Você perdeu, tente melhorar, o país era {}'.format(sorteado))
+        print ('\nVocê perdeu, tente melhorar, o país era \033[35m{}\033[m'.format(sorteado))
 
     #parte para jogar denovo
     
-    jogar=input('\n você quer jogar donvo(s/n)')
+    jogar=input('você quer jogar donvo(s/n)')
     
