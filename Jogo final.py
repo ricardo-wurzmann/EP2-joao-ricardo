@@ -1,11 +1,12 @@
 #normalizando base países
 from operator import itemgetter
-from random import random
+import random
 import Funcoes
 import Base_países
 dados=Funcoes.normaliza(Base_países.DADOS)
 #print(dados)
 jogar='s'
+cores_usadas=[]
 while jogar=='s': 
     #criando variaveis para rodar no while
     distancias= []
@@ -27,7 +28,6 @@ while jogar=='s':
     print("\nUm país foi escolhido, tente adivinhar!")
 
     sorteado = Funcoes.sorteia_pais(dados)
-    print(sorteado)
 
 
     while Tentativa != sorteado and chances>0:
@@ -56,15 +56,18 @@ while jogar=='s':
                 elif escolha_dica == 1:
                     for i in dados[sorteado]['bandeira']:
                         lista_cores = []
-                        if i.value != 0:
+                        if dados[sorteado]['bandeira'][i] != 0:
                             lista_cores.append(i)
-                    cor = random(lista_cores)
-                    if cor not in dicas_compradas:
-                        dicas_compradas.append(cor,1,'cor da bandeira','' )
+                    cor = random.choice(lista_cores)
+                    if lista_cores!=[] and lista_cores != cores_usadas   :
+                        while cor in cores_usadas:
+                            cor = random.choice(lista_cores)
+                        cores_usadas.append(cor)
+                        dicas_compradas.append([cor,1,'cor da bandeira',''] )
+                        #precisa só aparecer uma cor de bandeira
+                        chances-=4
                     else:
-                        cor = random(lista_cores)
-                    #precisa só aparecer uma cor de bandeira
-                    chances-=4
+                        print("ja foi todas as cores")
                 elif escolha_dica == 2:
                     strcap=dados[sorteado]['capital']
                     letra_sorteada = Funcoes.sorteia_letra(strcap,letras_sorteadas)
